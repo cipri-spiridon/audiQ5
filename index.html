@@ -6,6 +6,17 @@
   <title>Audi Q5 50 TFSI e quattro</title>
 
   <style>
+    :root {
+      --accent: #1a3a5c;       /* albastru-antracit, ton Audi */
+      --accent-light: #2c5a8c;
+      --accent-soft: #eaf1f8;
+      --price-color: #c00000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       max-width: 1100px;
@@ -27,20 +38,40 @@
       text-align: center;
       font-size: 40px;
       margin-bottom: 10px;
+      color: var(--accent);
     }
 
     h2 {
       margin-top: 40px;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .price-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 10px 0;
     }
 
     .price {
       font-size: 38px;
-      color: #c00000;
+      color: var(--price-color);
       font-weight: bold;
-      text-align: center;
-      margin: 10px 0;
+    }
+
+    .price-badge {
+      background-color: var(--accent-soft);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--accent-light);
+      white-space: nowrap;
     }
 
     .subtitle {
@@ -50,18 +81,97 @@
       margin-bottom: 25px;
     }
 
-    .hero-image {
+    /* Hero slider */
+    .hero-slider {
+      position: relative;
       width: 100%;
+      height: 420px;
       border-radius: 14px;
-      margin: 25px 0;
+      overflow: hidden;
       box-shadow: 0 0 18px rgba(0,0,0,0.18);
+      margin: 25px 0;
+      background-color: #ddd;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .hero-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .hero-dot.active {
+      background-color: white;
+    }
+
+    .hero-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.35);
+      color: white;
+      border: none;
+      font-size: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .hero-nav:hover {
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .hero-prev {
+      left: 16px;
+    }
+
+    .hero-next {
+      right: 16px;
     }
 
     .info-box {
-      background-color: #f1f1f1;
+      background-color: var(--accent-soft);
       padding: 18px;
       border-radius: 10px;
       margin-top: 20px;
+      border-left: 4px solid var(--accent);
     }
 
     table {
@@ -75,6 +185,34 @@
       padding: 5px 20px 5px 0;
     }
 
+    /* Dotări grupate */
+    .dotari-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .dotari-group {
+      background-color: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .dotari-group h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dotari-group h3 .icon {
+      font-size: 18px;
+    }
+
     ul {
       margin-top: 0;
       padding-left: 22px;
@@ -84,54 +222,87 @@
       margin-bottom: 7px;
     }
 
+    .dotari-group li {
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-auto-rows: 180px;
       gap: 15px;
       margin-top: 20px;
     }
 
     .gallery img {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
       border-radius: 10px;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0,0,0,0.15);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: block;
     }
 
     .gallery img:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 16px rgba(0,0,0,0.25);
+      box-shadow: 0 0 16px rgba(0,0,0,0.3);
+    }
+
+    .gallery .featured {
+      grid-column: span 2;
+      grid-row: span 2;
     }
 
     .contact {
-      background-color: #222;
+      background-color: var(--accent);
       color: white;
-      padding: 22px;
+      padding: 26px;
       border-radius: 10px;
       text-align: center;
-      font-size: 22px;
       margin-top: 35px;
     }
 
-    .contact a {
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: white;
       text-decoration: none;
       font-weight: bold;
+      font-size: 17px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .phone-button {
+      background-color: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.35);
     }
 
     .whatsapp-button {
-      display: inline-block;
-      margin-top: 15px;
       background-color: #25D366;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
+    }
+
+    .contact-btn .icon {
+      font-size: 20px;
+      line-height: 1;
     }
 
     /* Lightbox */
@@ -216,20 +387,6 @@
     }
 
     @media (max-width: 700px) {
-      .lightbox-nav {
-        width: 44px;
-        height: 44px;
-        font-size: 24px;
-      }
-
-      .lightbox-close {
-        top: 12px;
-        right: 18px;
-        font-size: 32px;
-      }
-    }
-
-    @media (max-width: 700px) {
       body {
         padding: 10px;
       }
@@ -255,8 +412,29 @@
         font-size: 16px;
       }
 
-      .gallery img {
-        height: 220px;
+      .hero-slider {
+        height: 240px;
+      }
+
+      .gallery {
+        grid-auto-rows: 220px;
+      }
+
+      .gallery .featured {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .lightbox-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+      }
+
+      .lightbox-close {
+        top: 12px;
+        right: 18px;
+        font-size: 32px;
       }
     }
   </style>
@@ -268,13 +446,29 @@
 
   <h1>Audi Q5 50 TFSI e quattro</h1>
 
-  <p class="price">32.500 €</p>
+  <div class="price-wrap">
+    <p class="price">32.500 €</p>
+    <span class="price-badge">Preț negociabil</span>
+  </div>
 
   <p class="subtitle">
     Audi Q5 Sport 50 TFSI e quattro • 299 CP • Plug-in Hybrid • quattro • S tronic
   </p>
 
-  <img src="images/IMG_2273_low.jpg" alt="Audi Q5 50 TFSI e quattro" class="hero-image">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <img src="images/IMG_2273_low.jpg" alt="Audi Q5 - vedere față">
+    </div>
+    <div class="hero-slide">
+      <img src="images/IMG_2283_low.jpg" alt="Audi Q5 - interior">
+    </div>
+    <div class="hero-slide">
+      <img src="images/IMG_2290_low.jpg" alt="Audi Q5 - bord">
+    </div>
+    <button class="hero-nav hero-prev" id="heroPrev">&#10094;</button>
+    <button class="hero-nav hero-next" id="heroNext">&#10095;</button>
+    <div class="hero-dots" id="heroDots"></div>
+  </div>
 
   <hr>
 
@@ -303,92 +497,93 @@
 
   <h2>Dotări</h2>
 
-  <table>
-    <tr>
-      <td>
-        <ul>
-          <li>Airbag-uri frontale, laterale și cortină</li>
-          <li>Bare longitudinale</li>
-          <li>Aer condiționat automat</li>
-          <li>Climatronic</li>
-          <li>Jante din aliaj</li>
-          <li>ABS</li>
-          <li>Sistem de navigare</li>
-          <li>Scaune încălzite electric</li>
-          <li>ESP</li>
-          <li>Închidere centralizată</li>
-          <li>Geamuri electrice</li>
-          <li>Tempomat</li>
-          <li>Oglinzi electrice</li>
-          <li>Tempomat adaptiv</li>
-          <li>Servodirecție</li>
-          <li>Bluetooth</li>
-          <li>Handsfree</li>
-          <li>Volan multifuncțional</li>
-          <li>Senzor de ploaie</li>
-          <li>Tuner / Radio</li>
-          <li>Reglare electrică a scaunelor</li>
-          <li>Isofix</li>
-          <li>Start / Stop</li>
-          <li>Sistem de evitare a coliziunilor Audi Pre Sense</li>
-          <li>Faruri LED</li>
-          <li>Lumini diurne</li>
-          <li>Imobilizator electric</li>
-          <li>Senzori de lumini</li>
-          <li>Keyless Go</li>
-          <li>Asistent unghi mort</li>
-          <li>Lane Assist</li>
-          <li>Pachet Sport</li>
-          <li>Scaune sport</li>
-          <li>Senzori de parcare față</li>
-        </ul>
-      </td>
+  <div class="dotari-grid">
 
-      <td>
-        <ul>
-          <li>Cameră de parcare</li>
-          <li>Senzori de parcare spate</li>
-          <li>Park Pilot</li>
-          <li>Computer de bord</li>
-          <li>Pachet S line exterior</li>
-          <li>Coming Home / Leaving Home</li>
-          <li>Virtual Cockpit</li>
-          <li>Asistență la frânare</li>
-          <li>Audi Pre Sense City</li>
-          <li>Audi Pre Sense Rear</li>
-          <li>Side Assist</li>
-          <li>Recunoaștere semne circulație</li>
-          <li>Asistență fază lungă</li>
-          <li>Adaptive Cruise Control</li>
-          <li>MMI Radio Plus</li>
-          <li>Audi Phone Box</li>
-          <li>MMI Navigation Plus cu MMI Touch</li>
-          <li>Sound System Bang & Olufsen</li>
-          <li>Cutie de viteze automată cu 7 rapoarte</li>
-          <li>Sideguard</li>
-          <li>Top View</li>
-          <li>Faruri LED Matrix</li>
-          <li>Stopuri LED cu semnalizare dinamică</li>
-          <li>Scaune față reglabile electric</li>
-          <li>Scaun șofer cu memorie</li>
-          <li>Bară spate Sport Design cu difuzor</li>
-          <li>Bară față Sport S line</li>
-          <li>Geamuri cu protecție solară</li>
-          <li>Volan încălzit</li>
-          <li>Aplicație mobilă Audi Connect</li>
-          <li>Deschidere uși din aplicația mobilă</li>
-          <li>Pornire climatizare din aplicația mobilă</li>
-          <li>Android Auto</li>
-          <li>Apple CarPlay</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+    <div class="dotari-group">
+      <h3><span class="icon">🛡️</span> Siguranță</h3>
+      <ul>
+        <li>Airbag-uri frontale, laterale și cortină</li>
+        <li>ABS / ESP</li>
+        <li>Sistem de evitare a coliziunilor Audi Pre Sense</li>
+        <li>Audi Pre Sense City</li>
+        <li>Audi Pre Sense Rear</li>
+        <li>Asistență la frânare</li>
+        <li>Asistent unghi mort</li>
+        <li>Side Assist / Sideguard</li>
+        <li>Lane Assist</li>
+        <li>Recunoaștere semne circulație</li>
+        <li>Asistență fază lungă</li>
+        <li>Isofix</li>
+        <li>Imobilizator electric</li>
+      </ul>
+    </div>
+
+    <div class="dotari-group">
+      <h3><span class="icon">🛋️</span> Confort</h3>
+      <ul>
+        <li>Aer condiționat automat / Climatronic</li>
+        <li>Scaune încălzite electric</li>
+        <li>Volan încălzit</li>
+        <li>Reglare / scaune față electrice</li>
+        <li>Scaun șofer cu memorie</li>
+        <li>Închidere centralizată</li>
+        <li>Geamuri electrice</li>
+        <li>Oglinzi electrice</li>
+        <li>Tempomat / Tempomat adaptiv</li>
+        <li>Adaptive Cruise Control</li>
+        <li>Servodirecție</li>
+        <li>Senzor de ploaie</li>
+        <li>Volan multifuncțional</li>
+        <li>Keyless Go</li>
+        <li>Start / Stop</li>
+        <li>Geamuri cu protecție solară</li>
+      </ul>
+    </div>
+
+    <div class="dotari-group">
+      <h3><span class="icon">🎵</span> Multimedia &amp; Conectivitate</h3>
+      <ul>
+        <li>Sistem de navigare / MMI Navigation Plus cu MMI Touch</li>
+        <li>MMI Radio Plus</li>
+        <li>Virtual Cockpit</li>
+        <li>Sound System Bang &amp; Olufsen</li>
+        <li>Bluetooth / Handsfree</li>
+        <li>Tuner / Radio</li>
+        <li>Android Auto / Apple CarPlay</li>
+        <li>Audi Phone Box</li>
+        <li>Aplicație mobilă Audi Connect</li>
+        <li>Deschidere uși din aplicația mobilă</li>
+        <li>Pornire climatizare din aplicația mobilă</li>
+        <li>Computer de bord</li>
+      </ul>
+    </div>
+
+    <div class="dotari-group">
+      <h3><span class="icon">🚗</span> Exterior &amp; Parcare</h3>
+      <ul>
+        <li>Jante din aliaj</li>
+        <li>Bare longitudinale</li>
+        <li>Faruri LED Matrix</li>
+        <li>Stopuri LED cu semnalizare dinamică</li>
+        <li>Lumini diurne / Senzori de lumini</li>
+        <li>Coming Home / Leaving Home</li>
+        <li>Pachet Sport / Pachet S line exterior</li>
+        <li>Bară față Sport S line</li>
+        <li>Bară spate Sport Design cu difuzor</li>
+        <li>Scaune sport</li>
+        <li>Cutie de viteze automată cu 7 rapoarte</li>
+        <li>Senzori de parcare față / spate</li>
+        <li>Park Pilot / Top View</li>
+        <li>Cameră de parcare</li>
+      </ul>
+    </div>
+
+  </div>
 
   <h2>Galerie foto</h2>
 
   <div class="gallery" id="gallery">
-    <img src="images/IMG_2273_low.jpg" alt="Audi Q5 - foto 1" class="gallery-img">
+    <img src="images/IMG_2273_low.jpg" alt="Audi Q5 - foto 1" class="gallery-img featured">
     <img src="images/IMG_2275_low.jpg" alt="Audi Q5 - foto 2" class="gallery-img">
     <img src="images/IMG_2276_low.jpg" alt="Audi Q5 - foto 3" class="gallery-img">
     <img src="images/IMG_2278_low.jpg" alt="Audi Q5 - foto 4" class="gallery-img">
@@ -439,10 +634,15 @@
   <h2>Contact</h2>
 
   <div class="contact">
-    Telefon: <a href="tel:+40720110699">0720 110 699</a><br>
-    <a href="https://wa.me/40720110699" class="whatsapp-button" target="_blank" rel="noopener">
-      Contact pe WhatsApp
-    </a>
+    <p style="margin:0; font-size: 18px;">Interesat de această mașină? Sună-ne sau scrie-ne pe WhatsApp.</p>
+    <div class="contact-buttons">
+      <a href="tel:+40720110699" class="contact-btn phone-button">
+        <span class="icon">📞</span> 0720 110 699
+      </a>
+      <a href="https://wa.me/40720110699" class="contact-btn whatsapp-button" target="_blank" rel="noopener">
+        <span class="icon">💬</span> Contact pe WhatsApp
+      </a>
+    </div>
   </div>
 
 </div>
@@ -458,6 +658,38 @@
 
 <script>
   (function () {
+    /* ---- Hero slider ---- */
+    const heroSlides = Array.from(document.querySelectorAll('#heroSlider .hero-slide'));
+    const heroDotsWrap = document.getElementById('heroDots');
+    const heroPrevBtn = document.getElementById('heroPrev');
+    const heroNextBtn = document.getElementById('heroNext');
+    let heroIndex = 0;
+    let heroTimer = null;
+
+    heroSlides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goToHero(i));
+      heroDotsWrap.appendChild(dot);
+    });
+    const heroDots = Array.from(heroDotsWrap.children);
+
+    function goToHero(index) {
+      heroIndex = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((s, i) => s.classList.toggle('active', i === heroIndex));
+      heroDots.forEach((d, i) => d.classList.toggle('active', i === heroIndex));
+    }
+
+    function resetHeroTimer() {
+      clearInterval(heroTimer);
+      heroTimer = setInterval(() => goToHero(heroIndex + 1), 5000);
+    }
+
+    heroPrevBtn.addEventListener('click', () => { goToHero(heroIndex - 1); resetHeroTimer(); });
+    heroNextBtn.addEventListener('click', () => { goToHero(heroIndex + 1); resetHeroTimer(); });
+    resetHeroTimer();
+
+    /* ---- Gallery lightbox ---- */
     const galleryImgs = Array.from(document.querySelectorAll('#gallery .gallery-img'));
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
@@ -490,18 +722,26 @@
       img.addEventListener('click', () => openLightbox(index));
     });
 
+    // Hero images also open the lightbox at their matching gallery position
+    heroSlides.forEach((slide) => {
+      const img = slide.querySelector('img');
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        const match = galleryImgs.findIndex(g => g.src === img.src);
+        openLightbox(match >= 0 ? match : 0);
+      });
+    });
+
     closeBtn.addEventListener('click', closeLightbox);
     nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
     prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
 
-    // Închidere la click pe fundal (nu pe imagine sau butoane)
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
         closeLightbox();
       }
     });
 
-    // Navigare cu tastatura
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
