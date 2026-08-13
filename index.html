@@ -134,6 +134,101 @@
       font-weight: bold;
     }
 
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      user-select: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 1002;
+    }
+
+    .lightbox-close:hover {
+      color: #ccc;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      font-size: 32px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .lightbox-nav:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 16px;
+      background-color: rgba(0,0,0,0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .lightbox-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+      }
+
+      .lightbox-close {
+        top: 12px;
+        right: 18px;
+        font-size: 32px;
+      }
+    }
+
     @media (max-width: 700px) {
       body {
         padding: 10px;
@@ -292,53 +387,53 @@
 
   <h2>Galerie foto</h2>
 
-  <div class="gallery">
-    <img src="images/IMG_2273_low.jpg" alt="Audi Q5 - foto 1">
-    <img src="images/IMG_2275_low.jpg" alt="Audi Q5 - foto 2">
-    <img src="images/IMG_2276_low.jpg" alt="Audi Q5 - foto 3">
-    <img src="images/IMG_2278_low.jpg" alt="Audi Q5 - foto 4">
-    <img src="images/IMG_2281_low.jpg" alt="Audi Q5 - foto 5">
-    <img src="images/IMG_2283_low.jpg" alt="Audi Q5 - foto 6">
-    <img src="images/IMG_2284_low.jpg" alt="Audi Q5 - foto 7">
-    <img src="images/IMG_2285_low.jpg" alt="Audi Q5 - foto 8">
-    <img src="images/IMG_2286_low.jpg" alt="Audi Q5 - foto 9">
-    <img src="images/IMG_2287_low.jpg" alt="Audi Q5 - foto 10">
-    <img src="images/IMG_2288_low.jpg" alt="Audi Q5 - foto 11">
-    <img src="images/IMG_2289_low.jpg" alt="Audi Q5 - foto 12">
-    <img src="images/IMG_2290_low.jpg" alt="Audi Q5 - foto 13">
-    <img src="images/IMG_2291_low.jpg" alt="Audi Q5 - foto 14">
-    <img src="images/IMG_2292_low.jpg" alt="Audi Q5 - foto 15">
-    <img src="images/IMG_2293_low.jpg" alt="Audi Q5 - foto 16">
-    <img src="images/IMG_2294_low.jpg" alt="Audi Q5 - foto 17">
-    <img src="images/IMG_2295_low.jpg" alt="Audi Q5 - foto 18">
-    <img src="images/IMG_2296_low.jpg" alt="Audi Q5 - foto 19">
-    <img src="images/IMG_2298_low.jpg" alt="Audi Q5 - foto 20">
-    <img src="images/IMG_2299_low.jpg" alt="Audi Q5 - foto 21">
-    <img src="images/IMG_2300_low.jpg" alt="Audi Q5 - foto 22">
-    <img src="images/IMG_2301_low.jpg" alt="Audi Q5 - foto 23">
-    <img src="images/IMG_2302_low.jpg" alt="Audi Q5 - foto 24">
-    <img src="images/IMG_2303_low.jpg" alt="Audi Q5 - foto 25">
-    <img src="images/IMG_2304_low.jpg" alt="Audi Q5 - foto 26">
-    <img src="images/IMG_2305_low.jpg" alt="Audi Q5 - foto 27">
-    <img src="images/IMG_2306_low.jpg" alt="Audi Q5 - foto 28">
-    <img src="images/IMG_2307_low.jpg" alt="Audi Q5 - foto 29">
-    <img src="images/IMG_2308_low.jpg" alt="Audi Q5 - foto 30">
-    <img src="images/IMG_2309_low.jpg" alt="Audi Q5 - foto 31">
-    <img src="images/IMG_2310_low.jpg" alt="Audi Q5 - foto 32">
-    <img src="images/IMG_2311_low.jpg" alt="Audi Q5 - foto 33">
-    <img src="images/IMG_2312_low.jpg" alt="Audi Q5 - foto 34">
-    <img src="images/IMG_2313_low.jpg" alt="Audi Q5 - foto 35">
-    <img src="images/IMG_2314_low.jpg" alt="Audi Q5 - foto 36">
-    <img src="images/IMG_2315_low.jpg" alt="Audi Q5 - foto 37">
-    <img src="images/IMG_2316_low.jpg" alt="Audi Q5 - foto 38">
-    <img src="images/IMG_2317_low.jpg" alt="Audi Q5 - foto 39">
-    <img src="images/IMG_2318_low.jpg" alt="Audi Q5 - foto 40">
-    <img src="images/IMG_2319_low.jpg" alt="Audi Q5 - foto 41">
-    <img src="images/IMG_2321_low.jpg" alt="Audi Q5 - foto 42">
-    <img src="images/IMG_2323_low.jpg" alt="Audi Q5 - foto 43">
-    <img src="images/IMG_2324_low.jpg" alt="Audi Q5 - foto 44">
-    <img src="images/IMG_2325_low.jpg" alt="Audi Q5 - foto 45">
-    <img src="images/IMG_2326_low.jpg" alt="Audi Q5 - foto 46">
+  <div class="gallery" id="gallery">
+    <img src="images/IMG_2273_low.jpg" alt="Audi Q5 - foto 1" class="gallery-img">
+    <img src="images/IMG_2275_low.jpg" alt="Audi Q5 - foto 2" class="gallery-img">
+    <img src="images/IMG_2276_low.jpg" alt="Audi Q5 - foto 3" class="gallery-img">
+    <img src="images/IMG_2278_low.jpg" alt="Audi Q5 - foto 4" class="gallery-img">
+    <img src="images/IMG_2281_low.jpg" alt="Audi Q5 - foto 5" class="gallery-img">
+    <img src="images/IMG_2283_low.jpg" alt="Audi Q5 - foto 6" class="gallery-img">
+    <img src="images/IMG_2284_low.jpg" alt="Audi Q5 - foto 7" class="gallery-img">
+    <img src="images/IMG_2285_low.jpg" alt="Audi Q5 - foto 8" class="gallery-img">
+    <img src="images/IMG_2286_low.jpg" alt="Audi Q5 - foto 9" class="gallery-img">
+    <img src="images/IMG_2287_low.jpg" alt="Audi Q5 - foto 10" class="gallery-img">
+    <img src="images/IMG_2288_low.jpg" alt="Audi Q5 - foto 11" class="gallery-img">
+    <img src="images/IMG_2289_low.jpg" alt="Audi Q5 - foto 12" class="gallery-img">
+    <img src="images/IMG_2290_low.jpg" alt="Audi Q5 - foto 13" class="gallery-img">
+    <img src="images/IMG_2291_low.jpg" alt="Audi Q5 - foto 14" class="gallery-img">
+    <img src="images/IMG_2292_low.jpg" alt="Audi Q5 - foto 15" class="gallery-img">
+    <img src="images/IMG_2293_low.jpg" alt="Audi Q5 - foto 16" class="gallery-img">
+    <img src="images/IMG_2294_low.jpg" alt="Audi Q5 - foto 17" class="gallery-img">
+    <img src="images/IMG_2295_low.jpg" alt="Audi Q5 - foto 18" class="gallery-img">
+    <img src="images/IMG_2296_low.jpg" alt="Audi Q5 - foto 19" class="gallery-img">
+    <img src="images/IMG_2298_low.jpg" alt="Audi Q5 - foto 20" class="gallery-img">
+    <img src="images/IMG_2299_low.jpg" alt="Audi Q5 - foto 21" class="gallery-img">
+    <img src="images/IMG_2300_low.jpg" alt="Audi Q5 - foto 22" class="gallery-img">
+    <img src="images/IMG_2301_low.jpg" alt="Audi Q5 - foto 23" class="gallery-img">
+    <img src="images/IMG_2302_low.jpg" alt="Audi Q5 - foto 24" class="gallery-img">
+    <img src="images/IMG_2303_low.jpg" alt="Audi Q5 - foto 25" class="gallery-img">
+    <img src="images/IMG_2304_low.jpg" alt="Audi Q5 - foto 26" class="gallery-img">
+    <img src="images/IMG_2305_low.jpg" alt="Audi Q5 - foto 27" class="gallery-img">
+    <img src="images/IMG_2306_low.jpg" alt="Audi Q5 - foto 28" class="gallery-img">
+    <img src="images/IMG_2307_low.jpg" alt="Audi Q5 - foto 29" class="gallery-img">
+    <img src="images/IMG_2308_low.jpg" alt="Audi Q5 - foto 30" class="gallery-img">
+    <img src="images/IMG_2309_low.jpg" alt="Audi Q5 - foto 31" class="gallery-img">
+    <img src="images/IMG_2310_low.jpg" alt="Audi Q5 - foto 32" class="gallery-img">
+    <img src="images/IMG_2311_low.jpg" alt="Audi Q5 - foto 33" class="gallery-img">
+    <img src="images/IMG_2312_low.jpg" alt="Audi Q5 - foto 34" class="gallery-img">
+    <img src="images/IMG_2313_low.jpg" alt="Audi Q5 - foto 35" class="gallery-img">
+    <img src="images/IMG_2314_low.jpg" alt="Audi Q5 - foto 36" class="gallery-img">
+    <img src="images/IMG_2315_low.jpg" alt="Audi Q5 - foto 37" class="gallery-img">
+    <img src="images/IMG_2316_low.jpg" alt="Audi Q5 - foto 38" class="gallery-img">
+    <img src="images/IMG_2317_low.jpg" alt="Audi Q5 - foto 39" class="gallery-img">
+    <img src="images/IMG_2318_low.jpg" alt="Audi Q5 - foto 40" class="gallery-img">
+    <img src="images/IMG_2319_low.jpg" alt="Audi Q5 - foto 41" class="gallery-img">
+    <img src="images/IMG_2321_low.jpg" alt="Audi Q5 - foto 42" class="gallery-img">
+    <img src="images/IMG_2323_low.jpg" alt="Audi Q5 - foto 43" class="gallery-img">
+    <img src="images/IMG_2324_low.jpg" alt="Audi Q5 - foto 44" class="gallery-img">
+    <img src="images/IMG_2325_low.jpg" alt="Audi Q5 - foto 45" class="gallery-img">
+    <img src="images/IMG_2326_low.jpg" alt="Audi Q5 - foto 46" class="gallery-img">
   </div>
 
   <h2>Contact</h2>
@@ -351,6 +446,70 @@
   </div>
 
 </div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+  (function () {
+    const galleryImgs = Array.from(document.querySelectorAll('#gallery .gallery-img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      currentIndex = (index + galleryImgs.length) % galleryImgs.length;
+      const img = galleryImgs[currentIndex];
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryImgs.length;
+    }
+
+    function openLightbox(index) {
+      showImage(index);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    galleryImgs.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
+    prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+
+    // Închidere la click pe fundal (nu pe imagine sau butoane)
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Navigare cu tastatura
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    });
+  })();
+</script>
 
 </body>
 </html>
