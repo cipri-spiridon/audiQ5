@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
       padding: 20px;
       line-height: 1.6;
@@ -25,18 +25,18 @@
 
     h1 {
       text-align: center;
-      font-size: 38px;
+      font-size: 40px;
       margin-bottom: 10px;
     }
 
     h2 {
-      margin-top: 35px;
+      margin-top: 40px;
       border-bottom: 2px solid #ddd;
       padding-bottom: 8px;
     }
 
     .price {
-      font-size: 36px;
+      font-size: 38px;
       color: #c00000;
       font-weight: bold;
       text-align: center;
@@ -48,6 +48,13 @@
       text-align: center;
       color: #555;
       margin-bottom: 25px;
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 14px;
+      margin: 25px 0;
+      box-shadow: 0 0 18px rgba(0,0,0,0.18);
     }
 
     .info-box {
@@ -77,14 +84,36 @@
       margin-bottom: 7px;
     }
 
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 16px rgba(0,0,0,0.25);
+    }
+
     .contact {
       background-color: #222;
       color: white;
-      padding: 20px;
+      padding: 22px;
       border-radius: 10px;
       text-align: center;
-      font-size: 20px;
-      margin-top: 30px;
+      font-size: 22px;
+      margin-top: 35px;
     }
 
     .contact a {
@@ -93,7 +122,50 @@
       font-weight: bold;
     }
 
+    .whatsapp-button {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 10px;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
     @media (max-width: 700px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 18px;
+      }
+
       td {
         display: block;
         width: 100%;
@@ -104,7 +176,15 @@
       }
 
       .price {
-        font-size: 30px;
+        font-size: 32px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .gallery img {
+        height: 220px;
       }
     }
   </style>
@@ -121,6 +201,8 @@
   <p class="subtitle">
     Audi Q5 Sport 50 TFSI e quattro • 299 CP • Plug-in Hybrid • quattro • S tronic
   </p>
+
+  images/IMG_2273_low.jpg
 
   <hr>
 
@@ -231,13 +313,114 @@
     </tr>
   </table>
 
+  <h2>Galerie foto</h2>
+
+  <div class="gallery">
+    #img1images/IMG_2273_low.jpg</a>
+    #img2images/IMG_2275_low.jpg</a>
+    #img3images/IMG_2276_low.jpg</a>
+    #img4images/IMG_2278_low.jpg</a>
+    #img5images/IMG_2281_low.jpg</a>
+    #img6images/IMG_2283_low.jpg</a>
+    #img7images/IMG_2284_low.jpg</a>
+    #img8images/IMG_2285_low.jpg</a>
+    #img9images/IMG_2286_low.jpg</a>
+    #img10images/IMG_2287_low.jpg</a>
+    #img11images/IMG_2288_low.jpg</a>
+    #img12images/IMG_2289_low.jpg</a>
+    #img13images/IMG_2290_low.jpg</a>
+    #img14images/IMG_2291_low.jpg</a>
+    #img15images/IMG_2292_low.jpg</a>
+    #img16images/IMG_2293_low.jpg</a>
+    #img17images/IMG_2294_low.jpg</a>
+    #img18images/IMG_2295_low.jpg</a>
+    #img19images/IMG_2296_low.jpg</a>
+    #img20images/IMG_2298_low.jpg</a>
+    #img21images/IMG_2299_low.jpg</a>
+    #img22images/IMG_2300_low.jpg</a>
+    #img23images/IMG_2301_low.jpg</a>
+    #img24images/IMG_2302_low.jpg</a>
+    #img25images/IMG_2303_low.jpg</a>
+    #img26images/IMG_2304_low.jpg</a>
+    #img27images/IMG_2305_low.jpg</a>
+    #img28images/IMG_2306_low.jpg</a>
+    #img29images/IMG_2307_low.jpg</a>
+    #img30images/IMG_2308_low.jpg</a>
+    #img31images/IMG_2309_low.jpg</a>
+    #img32images/IMG_2310_low.jpg</a>
+    #img33images/IMG_2311_low.jpg</a>
+    #img34images/IMG_2312_low.jpg</a>
+    #img35images/IMG_2313_low.jpg</a>
+    #img36images/IMG_2314_low.jpg</a>
+    #img37images/IMG_2315_low.jpg</a>
+    #img38images/IMG_2316_low.jpg</a>
+    #img39images/IMG_2317_low.jpg</a>
+    #img40images/IMG_2318_low.jpg</a>
+    #img41images/IMG_2319_low.jpg</a>
+    #img42images/IMG_2321_low.jpg</a>
+    #img43images/IMG_2323_low.jpg</a>
+    #img44images/IMG_2324_low.jpg</a>
+    #img45images/IMG_2325_low.jpg</a>
+    #img46images/IMG_2326_low.jpg</a>
+  </div>
+
   <h2>Contact</h2>
 
   <div class="contact">
-    Telefon: 0720 110699</a>
+    Telefon: tel:07201106990720 110 699</a><br>
+    https://wa.me/40720110699
+      Contact pe WhatsApp
+    </a>
   </div>
 
 </div>
+
+<div id="img1" class="lightbox">#images/IMG_2273_low.jpg</a></div>
+<div id="img2" class="lightbox">#images/IMG_2275_low.jpg</a></div>
+<div id="img3" class="lightbox">#images/IMG_2276_low.jpg</a></div>
+<div id="img4" class="lightbox">#images/IMG_2278_low.jpg</a></div>
+<div id="img5" class="lightbox">#images/IMG_2281_low.jpg</a></div>
+<div id="img6" class="lightbox">#images/IMG_2283_low.jpg</a></div>
+<div id="img7" class="lightbox">#images/IMG_2284_low.jpg</a></div>
+<div id="img8" class="lightbox">#images/IMG_2285_low.jpg</a></div>
+<div id="img9" class="lightbox">#images/IMG_2286_low.jpg</a></div>
+<div id="img10" class="lightbox">#images/IMG_2287_low.jpg</a></div>
+<div id="img11" class="lightbox">#images/IMG_2288_low.jpg</a></div>
+<div id="img12" class="lightbox">#images/IMG_2289_low.jpg</a></div>
+<div id="img13" class="lightbox">#images/IMG_2290_low.jpg</a></div>
+<div id="img14" class="lightbox">#images/IMG_2291_low.jpg</a></div>
+<div id="img15" class="lightbox">#images/IMG_2292_low.jpg</a></div>
+<div id="img16" class="lightbox">#images/IMG_2293_low.jpg</a></div>
+<div id="img17" class="lightbox">#images/IMG_2294_low.jpg</a></div>
+<div id="img18" class="lightbox">#images/IMG_2295_low.jpg</a></div>
+<div id="img19" class="lightbox">#images/IMG_2296_low.jpg</a></div>
+<div id="img20" class="lightbox">#images/IMG_2298_low.jpg</a></div>
+<div id="img21" class="lightbox">#images/IMG_2299_low.jpg</a></div>
+<div id="img22" class="lightbox">#images/IMG_2300_low.jpg</a></div>
+<div id="img23" class="lightbox">#images/IMG_2301_low.jpg</a></div>
+<div id="img24" class="lightbox">#images/IMG_2302_low.jpg</a></div>
+<div id="img25" class="lightbox">#images/IMG_2303_low.jpg</a></div>
+<div id="img26" class="lightbox">#images/IMG_2304_low.jpg</a></div>
+<div id="img27" class="lightbox">#images/IMG_2305_low.jpg</a></div>
+<div id="img28" class="lightbox">#images/IMG_2306_low.jpg</a></div>
+<div id="img29" class="lightbox">#images/IMG_2307_low.jpg</a></div>
+<div id="img30" class="lightbox">#images/IMG_2308_low.jpg</a></div>
+<div id="img31" class="lightbox">#images/IMG_2309_low.jpg</a></div>
+<div id="img32" class="lightbox">#images/IMG_2310_low.jpg</a></div>
+<div id="img33" class="lightbox">#images/IMG_2311_low.jpg</a></div>
+<div id="img34" class="lightbox">#images/IMG_2312_low.jpg</a></div>
+<div id="img35" class="lightbox">#images/IMG_2313_low.jpg</a></div>
+<div id="img36" class="lightbox">#images/IMG_2314_low.jpg</a></div>
+<div id="img37" class="lightbox">#images/IMG_2315_low.jpg</a></div>
+<div id="img38" class="lightbox">#images/IMG_2316_low.jpg</a></div>
+<div id="img39" class="lightbox">#images/IMG_2317_low.jpg</a></div>
+<div id="img40" class="lightbox">#images/IMG_2318_low.jpg</a></div>
+<div id="img41" class="lightbox">#images/IMG_2319_low.jpg</a></div>
+<div id="img42" class="lightbox">#images/IMG_2321_low.jpg</a></div>
+<div id="img43" class="lightbox">#images/IMG_2323_low.jpg</a></div>
+<div id="img44" class="lightbox">#images/IMG_2324_low.jpg</a></div>
+<div id="img45" class="lightbox">#images/IMG_2325_low.jpg</a></div>
+<div id="img46" class="lightbox">#images/IMG_2326_low.jpg</a></div>
 
 </body>
 </html>
