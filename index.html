@@ -188,9 +188,15 @@
     /* Dotări grupate */
     .dotari-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
       margin-top: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .dotari-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .dotari-group {
@@ -515,11 +521,12 @@
         <li>Asistență fază lungă</li>
         <li>Isofix</li>
         <li>Imobilizator electric</li>
+        <li>Faruri LED Matrix</li>
       </ul>
     </div>
 
     <div class="dotari-group">
-      <h3><span class="icon">🛋️</span> Confort</h3>
+      <h3><span class="icon">🛋️</span> Confort și ergonomie</h3>
       <ul>
         <li>Aer condiționat automat / Climatronic</li>
         <li>Scaune încălzite electric</li>
@@ -537,6 +544,8 @@
         <li>Keyless Go</li>
         <li>Start / Stop</li>
         <li>Geamuri cu protecție solară</li>
+        <li>Scaune sport</li>
+        <li>Cutie de viteze automată cu 7 rapoarte</li>
       </ul>
     </div>
 
@@ -559,19 +568,16 @@
     </div>
 
     <div class="dotari-group">
-      <h3><span class="icon">🚗</span> Exterior &amp; Parcare</h3>
+      <h3><span class="icon">🚗</span> Alte caracteristici</h3>
       <ul>
         <li>Jante din aliaj</li>
         <li>Bare longitudinale</li>
-        <li>Faruri LED Matrix</li>
         <li>Stopuri LED cu semnalizare dinamică</li>
         <li>Lumini diurne / Senzori de lumini</li>
         <li>Coming Home / Leaving Home</li>
         <li>Pachet Sport / Pachet S line exterior</li>
         <li>Bară față Sport S line</li>
         <li>Bară spate Sport Design cu difuzor</li>
-        <li>Scaune sport</li>
-        <li>Cutie de viteze automată cu 7 rapoarte</li>
         <li>Senzori de parcare față / spate</li>
         <li>Park Pilot / Top View</li>
         <li>Cameră de parcare</li>
